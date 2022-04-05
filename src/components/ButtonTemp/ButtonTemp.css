@@ -1,0 +1,15 @@
+.temperatures {
+    background-color: rgba(96, 104, 104, 0.505);
+    padding: 10px;
+    width: 100%;
+}
+.temperatures h1 {
+    font-size: 100px;
+}
+.max-min {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    gap: 50px;
+}
