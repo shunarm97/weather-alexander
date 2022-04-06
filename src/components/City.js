@@ -6,7 +6,10 @@ const City = () => {
     const [pais, setPais] = useState([])
     
     useEffect(() => {
-        GetWather()
+        navigator.geolocation.getCurrentPosition(posicion => {
+
+
+        GetWather(posicion.coords.latitude, posicion.coords.longitude)
         .then (response => {
             setCiudad(response.data.name)
             setPais(response.data.sys.country)
@@ -15,6 +18,7 @@ const City = () => {
         .catch(err => {
             console.log(err)
         })
+    })
 
     }, [])
 

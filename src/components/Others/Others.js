@@ -10,7 +10,10 @@ const Others = () => {
     const [speedWind, setSpeedWind] = useState([])
     
     useEffect(() => {
-        GetWather()
+        navigator.geolocation.getCurrentPosition(posicion => {
+
+
+        GetWather(posicion.coords.latitude, posicion.coords.longitude)
         .then (response => {
             setPressure(response.data.main.pressure)
             setHumidity(response.data.main.humidity)
@@ -19,14 +22,15 @@ const Others = () => {
         .catch(err => {
             console.log(err)
         })
+    })
 
     }, [])
 
 return (
    <div className="Others">
        <p>{pressure} <br /> Presion </p>
-       <p>{humidity} <br /> Humedad </p>
-       <p>{speedWind} K/H <br /> Velocidad de Viento </p>
+       <p>{humidity}  %<br /> Humedad </p>
+       <p>{speedWind} m/s <br /> Velocidad de Viento </p>
     </div>
 )
 

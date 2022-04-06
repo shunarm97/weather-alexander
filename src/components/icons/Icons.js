@@ -6,7 +6,9 @@ const Icons = () => {
     const [idIcon, setIdIcon] = useState([])
     
     useEffect(() => {
-        GetWather()
+        navigator.geolocation.getCurrentPosition(posicion => {
+            
+        GetWather(posicion.coords.latitude, posicion.coords.longitude)
         .then (response => {
             setIcon(response.data.weather[0].main)
             setIdIcon(response.data.weather[0].icon)
@@ -15,6 +17,7 @@ const Icons = () => {
         .catch(err => {
             console.log(err)
         })
+    })
 
     }, [])
 

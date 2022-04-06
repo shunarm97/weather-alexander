@@ -11,7 +11,10 @@ const ButtonTemp = () => {
     const   [minTem, setMinTem] = useState ([])
 
     useEffect(() => {
-        GetWather()
+        navigator.geolocation.getCurrentPosition(posicion => {
+
+        
+        GetWather(posicion.coords.latitude, posicion.coords.longitude)
         .then (response => {
             setTemperatura(response.data.main.temp)
             setMaxTem(response.data.main.temp_max)
@@ -20,11 +23,9 @@ const ButtonTemp = () => {
         .catch(err => {
             console.log(err)
         })
+    })
 
     }, [])
-// console.log(temperatura)
-// console.log(maxTem)
-// console.log(minTem)
 
     return (
         <div className='temperatures'>
