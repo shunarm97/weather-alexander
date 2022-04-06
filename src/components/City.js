@@ -3,11 +3,13 @@ import GetWather from "../services/GetWather";
 
 const City = () => {
     const [ciudad, setCiudad] = useState([])
+    const [pais, setPais] = useState([])
     
     useEffect(() => {
         GetWather()
         .then (response => {
             setCiudad(response.data.name)
+            setPais(response.data.sys.country)
          
         })
         .catch(err => {
@@ -16,10 +18,8 @@ const City = () => {
 
     }, [])
 
-    const reCiudad = ciudad
-
 return (
-    reCiudad
+    <h2>{ciudad}, {pais}</h2>
 )
 
 }

@@ -1,0 +1,14 @@
+.Others {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    
+    /* margin: 20px; */
+}
+.Others p {
+    background-color: rgba(96, 104, 104, 0.505);
+    padding: 0 30px;
+    width: auto;
+    border-radius: 10px;
+    
+}

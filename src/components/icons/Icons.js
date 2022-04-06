@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import GetWather from "../services/GetWather";
-
+import GetWather from "../../services/GetWather";
+import './Icons.css'
 const Icons = () => {
     const [icon, setIcon] = useState([])
+    const [idIcon, setIdIcon] = useState([])
     
     useEffect(() => {
         GetWather()
         .then (response => {
             setIcon(response.data.weather[0].main)
+            setIdIcon(response.data.weather[0].icon)
          
         })
         .catch(err => {
@@ -17,16 +19,13 @@ const Icons = () => {
     }, [])
 
     const reIcon = icon
-     
-    const [time, seTime] = useState (true)
-    
-    // console.log(reIcon)
 
 return (
    <div>
-{/*    
-//    <img src="./galery/tornado-icon.png" alt="" />
-    <img src={time ? url('./galery/tornado-icon.png') : url('./galery/rain-icon.png')  } alt="" /> */}
+       <div className="img">
+           <img src={`http://openweathermap.org/img/wn/${idIcon}@2x.png`} alt="" />
+       </div>
+       <p>{reIcon}</p>
     </div>
 )
 
